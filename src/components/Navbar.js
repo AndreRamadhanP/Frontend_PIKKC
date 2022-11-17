@@ -20,9 +20,10 @@ const Navbar = () => {
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
           
+          
           <a className="navbar-item">
           <NavLink to="/dashboard" style={{ textDecoration: "none " }}>
-            Home
+            Home Aaja
           </NavLink>
           </a>
         </div>
