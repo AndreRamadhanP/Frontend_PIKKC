@@ -6,6 +6,7 @@ const EditDirectory = () => {
   const [name, setName] = useState("");
   const [jurnal, setJurnal] = useState("");
   const [tahun, setTahun] = useState("");
+  const [file, setFile] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -19,7 +20,8 @@ const EditDirectory = () => {
       await axios.put(`http://localhost:8005/api/v1/directories/${id}`, {
         "nama": name,
         "judulJurnal": jurnal,
-        "tahunTerbit": tahun
+        "tahunTerbit": tahun,
+        "file" : file
       },{headers:{
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }});
@@ -31,9 +33,10 @@ const EditDirectory = () => {
 
   const getDirectoryById = async () => {
     const response = await axios.get(`http://localhost:8005/api/v1/directories/${id}`);
-    setName(response.data.name);
-    setJurnal(response.data.jurnal);
-    setTahun(response.data.tahun);
+    console.log (response.data)
+    setName(response.data.data.nama);
+    setJurnal(response.data.data.judulJurnal);
+    setTahun(response.data.data.tahunTerbit);
   };
 
   return (
@@ -46,7 +49,7 @@ const EditDirectory = () => {
               <input
                 type="text"
                 className="input"
-                value={name}
+                value={name||""}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Name"
               />
@@ -58,7 +61,7 @@ const EditDirectory = () => {
               <input
                 type="text"
                 className="input"
-                value={jurnal}
+                value={jurnal||""}
                 onChange={(e) => setJurnal(e.target.value)}
                 placeholder="Jurnal"
               />
@@ -71,11 +74,21 @@ const EditDirectory = () => {
               <input
                 type="text"
                 className="input"
-                value={tahun}
+                value={tahun||""}
                 onChange={(e) => setTahun(e.target.value)}
                 placeholder="Tahun"
                 />
 
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Edit File</label>
+            <div className="control">
+              <input
+                type="file"
+                value={file||""}
+                onChange={(e) => setFile(e.target.value)}
+              />
             </div>
           </div>
           <div className="field">
@@ -85,6 +98,7 @@ const EditDirectory = () => {
           </div>
         </form>
       </div>
+      
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ const Login = () => {
                 console.log(res.data.data.token)
                 localStorage.setItem("token",res.data.data.token)
             });
-            navigate("/");
+            navigate("/dashboard");
         } catch (error) {
             if(error.response){
                 console.log(error.response.data);
@@ -33,24 +34,26 @@ const Login = () => {
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
                             <form onSubmit={Login} className="box">
-                                <div className="field mt-5">
-                                    <label className="label">Email</label>
-                                    <div className="controls">
-                                        <input type="text" className="input" placeholder="Email" value={email} onChange={(e)=> setEmail(e.target.value)} />
+                                <label class="label">Email</label>
+                                    <div class="control has-icons-left has-icons-right">
+                                    <input type="text" className="input" placeholder="email" value={email} onChange={(e)=> setEmail(e.target.value)} />
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
                                     </div>
-                                </div>
                                 <div className="field mt-5">
                                     <label className="label">Password</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="******" value={password} onChange={(e)=> setPassword(e.target.value)} />
-
                                     </div>
                                 </div>
                                 <div className="field mt-5">
                                     <button className="button is-success is-fullwidth">Login</button>
                                 </div>
+                                <NavLink to="/">
+                                    <button className="button is-success is-fullwidth" type='submit'>Register</button>
+                                </NavLink>
                             </form>
-                            <script src="script.js"></script>
                         </div>
                     </div>
                 </div>

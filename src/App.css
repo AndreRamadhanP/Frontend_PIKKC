@@ -1,0 +1,79 @@
+.directory-style {
+    width : 100%;
+    padding-top : 20px;
+    padding-left : 20px;
+  }
+
+.profil-style {
+    width : 100%;
+    padding-top : 20px;
+    padding-left : 20px;
+  }
+
+  .jurnal-style {
+    width : 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .sidebar{
+      display: none;
+    }
+  }
+  
+  .sidebar {
+    background-color: black;
+    width: 15%;
+    height: 768px;
+    color: white;
+    padding: 25px;
+    font-family: Sans-Serif;
+    display : flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 21px;
+  }
+  .main {
+    display : flex;
+  }
+  .konten {
+    width :90%;
+  }
+  .directory-list {
+    width : 100%
+  }
+  .button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  .button:hover {background-color: white}
+  
+  .button:active {
+    background-color: white;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  .menu-list {
+    position: sticky;
+    display: inline-block;
+    vertical-align: top;
+    max-height: 100vh;
+    overflow-y: auto;
+    font-size: 20px;
+    color: white;
+    width: 200px;
+    top: 0;
+    bottom: 0;
+    padding: 20px;
+  }
+  
